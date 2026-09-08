@@ -1,0 +1,134 @@
+<?php
+require "includes/database_connect.php";
+
+$sql = "SELECT * FROM items WHERE section = 'found'";
+$result = mysqli_query($conn, $sql);
+if (!$result) {
+    echo "Something went wrong!";
+    return;
+}
+$foundItems = mysqli_fetch_all($result, MYSQLI_ASSOC);
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<?php include 'includes/navbar.php'; ?>
+    <div class="top-bar">
+        <h1 class="title">Found Items</h1>
+        <div class="search">
+            <input id="item-search" type="text">
+            <label class="icon-wrapper" for="item-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+        </div>
+        <div class="button-container">
+            <a href="additem.php"><button class="add-item" type="button" >Add Item</button></a>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <?php
+        foreach ($foundItems as $found) {
+            $found_images = glob("images/items/" . $found['image']);
+        ?>
+        <div class="item">
+            <div class="item-image-container">
+                <img class="item-image" src="<?= $found_images?>" alt="">
+            </div>
+            <div class="details">
+                <h2><?php $found['item'] ?></h2>
+                <p><?php $found['desc'] ?></p>
+                <p>location: <?php $found['location'] ?></p>
+                <p>contact: <?php $found['contact'] ?></p>
+                <p>status: incomplete</p>
+            </div>
+        </div>
+        <?php
+        }
+        ?>
+        <div class="item">
+            <div class="item-image-container">
+                <img class="item-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1iTrWLSdd-LdVASJO8NdaHXjK2Urbr9itPA&s" alt="">
+            </div>
+            <div class="details">
+                <h2>Helmet</h2>
+                <p>description: i found this helmet in the parking near canteen</p>
+                <p>location: near saliter ground</p>
+                <p>contact: 9016044940</p>
+                <p>status: incomplete</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-image-container">
+                <img class="item-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1iTrWLSdd-LdVASJO8NdaHXjK2Urbr9itPA&s" alt="">
+            </div>
+            <div class="details">
+                <h2>title</h2>
+                <p>description Lorem ipsum dolor sit amet.</p>
+                <p>location: near saliter ground</p>
+                <p>contact: 9016044940</p>
+                <p>status: incomplete</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-image-container">
+                <img class="item-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1iTrWLSdd-LdVASJO8NdaHXjK2Urbr9itPA&s" alt="">
+            </div>
+            <div class="details">
+                <h2>title</h2>
+                <p>description Lorem ipsum dolor sit amet.</p>
+                <p>location: near saliter ground</p>
+                <p>contact: 9016044940</p>
+                <p>status: incomplete</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-image-container">
+                <img class="item-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1iTrWLSdd-LdVASJO8NdaHXjK2Urbr9itPA&s" alt="">
+            </div>
+            <div class="details">
+                <h2>title</h2>
+                <p>description Lorem ipsum dolor sit amet.</p>
+                <p>location: near saliter ground</p>
+                <p>contact: 9016044940</p>
+                <p>status: incomplete</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-image-container">
+                <img class="item-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1iTrWLSdd-LdVASJO8NdaHXjK2Urbr9itPA&s" alt="">
+            </div>
+            <div class="details">
+                <h2>title</h2>
+                <p>description Lorem ipsum dolor sit amet.</p>
+                <p>location: near saliter ground</p>
+                <p>contact: 9016044940</p>
+                <p>status: incomplete</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-image-container">
+                <img class="item-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1iTrWLSdd-LdVASJO8NdaHXjK2Urbr9itPA&s" alt="">
+            </div>
+            <div class="details">
+                <h2>title</h2>
+                <p>description Lorem ipsum dolor sit amet.</p>
+                <p>location: near saliter ground</p>
+                <p>contact: 9016044940</p>
+                <p>status: incomplete</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
